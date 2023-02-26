@@ -17,4 +17,15 @@ export class AxiosAdapter implements HttpAdapter {
             throw new Error('This is an error - Check logs');
         }
     }
+
+    private async post<T> ( url: string ): Promise<T> {
+
+        try {
+            const { data } = await this.axios.get<T>(url);
+            return data;
+
+        } catch (error) {
+            throw new Error('This is an error - Check logs');
+        }
+    }
 }
